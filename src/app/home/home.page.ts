@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,18 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor( private auth:AuthService, private router:Router ) {}
+
+  logout() {
+    this.auth.logout()?.then(
+      (data) => {
+        this.router.navigateByUrl("login");
+      }
+    ).catch(
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
 }
