@@ -24,21 +24,27 @@ export class LoginPage implements OnInit {
         let mensaje;
 
         console.log(err);
-        switch(err.code)
-        {
+        switch(err.code) {
           case 'auth/invalid-email':
-            mensaje =  "Correo inválido.";
-          break;
-          case 'auth/missing-password':
-            mensaje = "Contraseña inválida.";
-          break;
-          case 'auth/invalid-login-credentials':
-            mensaje = 'Correo y/o contraseña incorrectos.';
-          break;
+            mensaje = "Correo inválido.";
+            break;
+          case 'auth/user-disabled':
+            mensaje = "Este usuario ha sido deshabilitado.";
+            break;
+          case 'auth/user-not-found':
+            mensaje = "No se encontró ningún usuario con este correo.";
+            break;
+          case 'auth/wrong-password':
+            mensaje = "Contraseña incorrecta.";
+            break;
+          case 'auth/invalid-credential':
+            mensaje = "Credenciales de autenticación inválidas.";
+            break;
           case 'auth/too-many-requests':
-            mensaje = "Demasiados intentos, intente nuevamente mas tarde.";
-          break;
-          default: mensaje= 'Ocurrió un error. Por favor, inténtalo de nuevo.';
+            mensaje = "Demasiados intentos, intente nuevamente más tarde.";
+            break;
+          default:
+            mensaje = err + "    Ocurrió un error. Por favor, inténtalo de nuevo.";
         }
 
         Swal.fire({
@@ -56,6 +62,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Login Iniciado");
   }
 
 }

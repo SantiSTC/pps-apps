@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -68,6 +68,15 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Register Iniciado");
+  }
+
+  fastLogin(email: string, password: string) {
+    this.auth.login(email, password)?.then(
+      (data) => {
+        this.router.navigateByUrl("home");
+      }
+    );
   }
 
 }
