@@ -1,13 +1,36 @@
 <ion-content [fullscreen]="true">
-  <header collapse="condense">
-    <div class="w-full flex flex-row justify-between items-center h-16 bg-zinc-900 pr-6">
-      <ion-title size="large">Home</ion-title>
-      <button (click)="logout()" class="flex items-center bg-blue-500 rounded-lg h-8 text-sm p-3 hover:bg-blue-700 transition-colors duration-300">Salir</button>
+  <div class="w-screen h-screen flex flex-col overflow-hidden bg-customRed">
+    <div class="w-full h-20 flex flex-row shadow-lg items-center bg-customRed justify-between">
+      <div class="pl-6 flex justify-start ">
+        <img src="/assets/relevamiento.png" alt="" class="h-14 w-14 rounded-lg z-50">
+      </div>
+      <div class="w-full flex justify-center absolute z-10">
+        <p class="font-bold text-2xl">Relevamiento</p>
+      </div>
+      <div (click)="logout()" class="pr-6 active:scale-95 z-50">
+        <img src="/assets/salir.png" alt="" class="h-7 w-7 bg-cover">
+      </div>
     </div>
-  </header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div class="flex w-full h-full flex-col gap-6 p-8 mb-20">
+      <div (click)="redirectTo('cosas/lindas')" class="h-full w-full flex flex-col items-center justify-center gap-5 rounded-xl shadow-lg bg-customCian text-white active:scale-95 transition-all">
+        <p class="text-4xl font-bold">Cosas Lindas</p>
+        <img src="/assets/like.png" alt="" class="rotate-180 w-20 h-20">
+      </div>
+      <div (click)="redirectTo('cosas/feas')" class="h-full w-full flex flex-col items-center justify-center gap-5 rounded-xl shadow-lg bg-customBlue text-white active:scale-95 transition-all">
+        <p class="text-4xl font-bold">Cosas Feas</p>
+        <img src="/assets/like.png" alt="" class="w-20 h-20">
+      </div>
+    </div>
+    <div class="fixed bottom-0 w-full h-20 flex flex-row shadow-lg items-center bg-customRed justify-between z-50 border-t border-black">
+      <div (click)="redirectTo('home')" class="pl-6 active:scale-95">
+        <img src="/assets/home.png" alt="" class="h-8 w-8 active:-translate-x-32 transition-all duration-500">
+      </div>
+      <div (click)="redirectTo('stats')" class="active:scale-95">
+        <img src="/assets/stats.png" alt="" class="h-8 w-8 active:-translate-x-32 transition-all duration-500">
+      </div>
+      <div class="pr-6 active:scale-95">
+        <img (click)="redirectTo('perfilpropio')" src="/assets/user.png" alt="" class="h-8 w-8 active:translate-x-32 transition-all duration-500">
+      </div>
+    </div>
   </div>
 </ion-content>

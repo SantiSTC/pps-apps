@@ -1,0 +1,33 @@
+<script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+
+<ion-content [fullscreen]="true">
+  <div class="w-screen h-screen flex flex-col overflow-hidden bg-customRed">
+    <div class="w-full h-20 flex flex-row shadow-lg items-center bg-customRed justify-between">
+      <div class="pl-6 flex justify-start ">
+        <img src="/assets/relevamiento.png" alt="" class="h-14 w-14 rounded-lg z-50">
+      </div>
+      <div class="w-full flex justify-center absolute z-10">
+        <p class="font-bold text-2xl">Graficos</p>
+      </div>
+      <div (click)="redirectTo('home')" class="pr-6 active:scale-95 z-50">
+        <img src="/assets/salir.png" alt="" class="h-7 w-7 bg-cover">
+      </div>
+    </div>
+    <div class="flex w-full h-full flex-col gap-6 p-8 mb-20">
+      <div (click)="redirectTo('stats-lindas')" class="h-full w-full flex flex-col items-center justify-center gap-5 rounded-xl shadow-lg bg-customCian text-white active:scale-95 transition-all">
+        <p class="text-4xl font-bold">Grafico Lindas</p>
+        <img src="/assets/like.png" alt="" class="rotate-180 w-20 h-20">
+      </div>
+      <div (click)="redirectTo('stats-feas')" class="h-full w-full flex flex-col items-center justify-center gap-5 rounded-xl shadow-lg bg-customBlue text-white active:scale-95 transition-all">
+        <p class="text-4xl font-bold">Grafico Feas</p>
+        <img src="/assets/like.png" alt="" class="w-20 h-20">
+      </div>
+    </div>
+    <div class="fixed bottom-0 w-full h-20 flex flex-row shadow-lg items-center bg-customRed justify-center z-50 border-t border-black">
+      <div (click)="redirectTo('home')" class="active:scale-95">
+        <img src="/assets/home.png" alt="" class="h-8 w-8 active:-translate-x-32 transition-all duration-500">
+      </div>
+    </div>
+  </div>
+</ion-content>
+

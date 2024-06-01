@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "pps-app-dc713": {
-      "hosting": {
-        "app": [
-          "pps-app-dc713"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "pps-app-dc713"
   }

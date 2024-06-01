@@ -39,3 +39,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300,400,500,700;
+    font-style: italic;
+  }
+
+* {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300,400,500,700;
+    font-style: normal;
+  }

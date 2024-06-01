@@ -1,28 +1,45 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [LoginGuard]
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+    path: 'cosas/:atributo',
+    loadChildren: () => import('./pages/cosas/cosas.module').then( m => m.CosasPageModule)
   },
   {
-    path: 'splash',
-    component: SplashScreenComponent,
+    path: 'perfilpropio',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    path: 'perfil/:user',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'stats',
+    loadChildren: () => import('./pages/stats/stats.module').then( m => m.StatsPageModule)
+  },
+  {
+    path: 'stats-lindas',
+    loadChildren: () => import('./pages/stats-lindas/stats-lindas.module').then( m => m.StatsLindasPageModule)
+  },
+  {
+    path: 'stats-feas',
+    loadChildren: () => import('./pages/stats-feas/stats-feas.module').then( m => m.StatsFeasPageModule)
   },
 ];
 

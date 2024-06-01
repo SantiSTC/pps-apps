@@ -1,27 +1,35 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+    selector: 'app-login',
+    templateUrl: './login.page.html',
+    styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
   email: string = "";
   password: string = "";
 
+  spinner: boolean = false;
+  acceso: boolean = false;
+
   constructor( private auth:AuthService, private router:Router ) { }
 
   login() {
     this.auth.login(this.email, this.password)?.then(
-      (data) => {
-        this.router.navigateByUrl("home");
+      (data:any) => {
+        this.spinner = true;
+        setTimeout(() => {
+          this.spinner = false;
+          this.router.navigateByUrl("home");
+        }, 1500);
       }
     ).catch(
-      (err) => {
-        let mensaje;
+      (err:any) => {
+        let mensaje: string;
 
         console.log(err);
         switch(err.code) {
@@ -47,18 +55,24 @@ export class LoginPage implements OnInit {
             mensaje = err + "    Ocurrió un error. Por favor, inténtalo de nuevo.";
         }
 
-        Swal.fire({
-          title: "Error",
-          text: mensaje,
-          icon: "error",
-          heightAuto: false,
-        });
+        this.spinner = true;
+        setTimeout(() => {
+          this.spinner = false;
+          Swal.fire({
+            title: "Error",
+            text: mensaje,
+            icon: "error",
+            heightAuto: false,
+          })
+        }, 1500);
+
       }
     );
   }
 
-  redirectToRegister() {
-    this.router.navigateByUrl("register");
+  fastLogin(email: string, password: string) {
+    this.email = email;
+    this.password = password;
   }
 
   ngOnInit() {

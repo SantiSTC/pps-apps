@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true">
+    @if (spinner) {
+      <div class="h-screen w-screen flex justify-center items-center backdrop-blur-md z-50 absolute">
+        <app-spinner></app-spinner>
+      </div>
+  }
+  <div class="w-screen min-h-screen flex flex-col items-center gap-4 bg-customRed">
+    <div class="fixed w-full h-20 flex flex-row shadow-lg items-center bg-customRed justify-between z-50">
+      <div class="pl-6 flex justify-start z-50">
+        <img src="/assets/relevamiento.png" alt="" class="h-14 w-14 rounded-lg">
+      </div>
+      <div class="w-full flex justify-center absolute z-10">
+        <p class="font-bold text-2xl">Cosas {{atributo}}</p>
+      </div>
+      <div (click)="redirectTo('home')" class="pr-6 active:scale-95 z-50">
+        <img (click)="redirectTo('home')" src="/assets/salir.png" alt="" class="h-7 w-7">
+      </div>
+    </div>
+    <div class="w-full flex flex-col items-center justify-center gap-5 mb-20 mt-24">
+      @for (item of fotos; track $index) {
+        <app-posteo [url]=item.url [duenio]=item.uploadedBy [fecha]=item.uploadedAt></app-posteo>
+      }
+      <div class="w-full flex flex-col justify-center items-center gap-3">
+        <div class="h-px w-[80%] rounded-xl bg bg-zinc-800"></div>
+        <p class="text-white">No hay más fotos para mostrar</p>
+        <img src="/assets/relevamiento.png" alt="" class="h-10 w-10 rounded-lg">
+      </div>
+    </div>
+    <div class="fixed bottom-0 w-full h-20 flex flex-row shadow-lg items-center bg-customRed justify-between z-50 border-t border-black">
+      <div (click)="redirectTo('home')" class="pl-6 active:scale-95">
+        <img src="/assets/home.png" alt="" class="h-8 w-8 active:-translate-x-32 transition-all duration-500">
+      </div>
+      <div (click)="tomarFoto(atributo)" class="flex justify-start">
+        <img src="/assets/subir.png" alt="" class="h-8 w-8 active:-translate-y-32 transition-all duration-500">
+      </div>
+      <div class="pr-6 active:scale-95">
+        <img (click)="redirectTo('perfilpropio')" src="/assets/user.png" alt="" class="h-8 w-8 active:translate-x-32 transition-all duration-500">
+      </div>
+    </div>
+  </div>
+</ion-content>

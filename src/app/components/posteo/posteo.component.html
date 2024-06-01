@@ -1,0 +1,23 @@
+<div class="h-auto w-full flex flex-col items-center justify-center">
+  <div class="w-[85%] bg-white  rounded-2xl">
+    <div class="w-full flex flex-row items-center justify-start pl-3 h-12 gap-4">
+      <img src="/assets/user_b.png" alt="" (click)="redirectToPerfil()" class="h-8 w-8">
+      <p (click)="redirectToPerfil()" class="text-black font-bold">{{duenio}}</p>
+    </div>
+    <div class="w-full">
+      <img src={{url}} alt="" class="w-full">
+    </div>
+    <div class="w-full flex items-center justify-center px-3 h-14">
+      <div class="w-full h-full flex justify-start items-center flex-row gap-5">
+        @if (votado) {
+          <img (click)="votar()" src="/assets/votado.png" alt="" class="w-8 h-8 rotate-180">
+        } @else {
+          <img (click)="votar()" src="/assets/voto.png" alt="" class="w-8 h-8 rotate-180">
+        }
+      </div>
+      <div class="w-full h-full flex justify-end items-center">
+        <p class="italic text-zinc-700 text-end text-sm">{{fechaAMostrar}}</p>
+      </div>
+    </div>
+  </div>
+</div>
